@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button } from 'antd'
 import { Router, Link } from '@reach/router'
