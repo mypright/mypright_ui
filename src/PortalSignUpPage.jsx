@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PageHeader, Form, Icon, Input, Button, Checkbox } from 'antd'
+import { PageHeader, Button, Form } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
@@ -33,7 +33,7 @@ export default function PortalSignUpPage(props) {
           Signup Agreement
         </h1>
       </PageHeader>
-      <form
+      <Form
         onSubmit={event => onSubmitHandler(event, {
           url: url,
           detailsRequired: [
@@ -126,12 +126,16 @@ export default function PortalSignUpPage(props) {
             updateVal={setPanReason}
           />
         }
-        <button
-          type="submit"
-          >
-          Agree
-        </button>
-      </form>
+        <Button.Group style={{
+          display: 'flex',
+          marginTop: pageMargin,
+          marginBottom: pageMargin,
+          flexFlow: 'row wrap',
+          justifyContent: 'center'
+        }}>
+          <Button type="primary" size="large" htmlType="submit">Agree</Button>
+        </Button.Group>
+      </Form>
     </section>
   )
 }

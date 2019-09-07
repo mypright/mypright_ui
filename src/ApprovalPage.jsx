@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button,Collapse, Alert, Icon, PageHeader, Card  } from 'antd';
-import ButtonGroup from 'antd/lib/button/button-group';
+
 
 const {Panel} = Collapse;
 const text = `
@@ -73,7 +73,7 @@ function ApprovalPage() {
           ))
         }
       </Collapse>
-      <ButtonGroup style={{
+      <Button.Group style={{
         display: 'flex',
         marginTop: pageMargin,
         marginBottom: pageMargin,
@@ -81,7 +81,7 @@ function ApprovalPage() {
         justifyContent: 'center'
       }}>
         <Button type="primary" size="large">Approve Request</Button>
-      </ButtonGroup>
+      </Button.Group>
     </section>
   );
 }
