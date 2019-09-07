@@ -1,12 +1,38 @@
 import React, { useState } from 'react'
-import { PageHeader, Button, Form } from 'antd'
+import { PageHeader, Button, Form, Modal } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
+const REGISTER_API = ""
 
-function onSubmitHandler(event, data) {
-  console.log(data)
-  event.preventDefault();
+function generateLoginButton(id) {
+  return <button>{id}</button>
+}
+
+function responseHandler(response, setModal, setModalData) {
+  const data = JSON.parse(response)
+  const button = generateLoginButton(data.uniqueSiteId)
+  setModalData(button)
+  setModal(true)
+}
+
+function copyCode(data) {
+
+}
+
+function onSubmitHandler(event, setModal, setModalData, data) {
+  fetch(REGISTER_API, {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+          'Content-Type': 'application/json',
+      }
+  })
+  .then(res => res.text())
+  .then(res => responseHandler(res, setModal, setModalData))
+  .catch(exc => console.log(exc))
+
+  event.preventDefault()
 }
 
 export default function PortalSignUpPage(props) {
@@ -24,6 +50,10 @@ export default function PortalSignUpPage(props) {
   const [pan, setPan] = useState(false)
   const [panReason, setPanReason] = useState("")
 
+  const [modal, setModal] = useState(false)
+  const [modalData, setModalData] = useState("")
+
+
   const pageMargin = 25;
 
   return (
@@ -33,8 +63,19 @@ export default function PortalSignUpPage(props) {
           Signup Agreement
         </h1>
       </PageHeader>
+      <Modal
+          title="Welcome Onboard"
+          visible={modal}
+          onOk={() => copyCode()}
+          okText="Copy"
+        >
+          <p>Copy the below button code in your login page...</p>
+          {modalData.outerHTML}
+          <br/>
+          {modalData}
+        </Modal>
       <Form
-        onSubmit={event => onSubmitHandler(event, {
+        onSubmit={event => onSubmitHandler(event, setModal, setModalData, {
           url: url,
           detailsRequired: [
             {
