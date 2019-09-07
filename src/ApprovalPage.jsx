@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button,Collapse, Alert, Icon, PageHeader, Card  } from 'antd'x
+import { Button,Collapse, Alert, Icon, PageHeader, Card  } from 'antd';
 import ButtonGroup from 'antd/lib/button/button-group';
 
 const {Panel} = Collapse;

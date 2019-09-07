@@ -18,7 +18,7 @@ export default function PortalSignUpPage(props) {
   const [panReason, setPanReason] = useState("")
 
   return (
-    <div className="App">
+    <section>
       <h2>Signup Agreement</h2>
       <form>
         <FormField
@@ -89,6 +89,6 @@ export default function PortalSignUpPage(props) {
           />
         }
       </form>
-    </div>
+    </section>
   )
 }
