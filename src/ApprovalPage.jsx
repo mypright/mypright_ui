@@ -24,6 +24,28 @@ const customPanelStyle = {
 };
 
 function ApprovalPage() {
+  const data = {
+    portalDetails: {
+      name: 'Google'
+    },
+    dataPoints: [
+      {
+        id: 1,
+        title: 'Email Address',
+        description: text
+      },
+      {
+        id: 1,
+        title: 'Aadhaar Number',
+        description: text
+      },
+      {
+        id: 1,
+        title: 'Passport ID',
+        description: text
+      }
+    ]
+  }
   return (
     <section className="container">
       <PageHeader style={{margin: pageMargin, padding: 0}}>
@@ -31,7 +53,7 @@ function ApprovalPage() {
           Approval request
         </h1>
       </PageHeader>
-      <Card style={{margin: pageMargin}}><b>Google</b> is requesting access to your account:</Card>
+      <Card style={{margin: pageMargin}}><b>{data.portalDetails.name}</b> is requesting access to your account:</Card>
       <Alert
         style={{margin: pageMargin}}
         message="Warning"
@@ -44,15 +66,13 @@ function ApprovalPage() {
         defaultActiveKey={['1']}
         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
       >
-        <Panel header="Email Address" key="1" style={customPanelStyle}>
-          <p>{text}</p>
-        </Panel>
-        <Panel header="Aadhaar number" key="2" style={customPanelStyle}>
-          <p>{text}</p>
-        </Panel>
-        <Panel header="Passport ID" key="3" style={customPanelStyle}>
-          <p>{text}</p>
-        </Panel>
+        {
+          data.dataPoints.map(point => (
+            <Panel header={point.title} key={point.id} style={customPanelStyle}>
+              <p>{point.description}</p>
+            </Panel>
+          ))
+        }
       </Collapse>
       <ButtonGroup style={{
         display: 'flex',
