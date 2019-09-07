@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'antd'
 import { Router, Link } from '@reach/router'
+import ApprovalPage from './ApprovalPage'
 
-const ApprovalPage = () => <Link to="/portal"><Button>Portal signup page</Button></Link>
+// const ApprovalPage = () => <Link to="/portal"><Button>Portal signup page</Button></Link>
 const PortalSignUpPage = () => <Link to="/approval"><Button>Approval page</Button></Link>
 
 function App() {

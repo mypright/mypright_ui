@@ -1,7 +1,15 @@
 @import '~antd/dist/antd.css';
 
 .App {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
   text-align: center;
+  background: #9ad4d6;
+  min-height: 100vh;
+  padding: 10vw 20vw;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
 }
 
 .App-logo {
@@ -32,4 +40,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  width: 80%;
+  background: #f6f8ff;
+  min-height: 600px;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0px 10px 100px 1px rgba(0,0,0,0.2);
+  text-align: left;
+  overflow: auto;
 }
