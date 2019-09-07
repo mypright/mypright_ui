@@ -3,6 +3,12 @@ import { PageHeader, Form, Icon, Input, Button, Checkbox } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
+
+function onSubmitHandler(event, data) {
+  console.log(data)
+  event.preventDefault();
+}
+
 export default function PortalSignUpPage(props) {
   const [url, setUrl] = useState("")
 
@@ -27,7 +33,32 @@ export default function PortalSignUpPage(props) {
           Signup Agreement
         </h1>
       </PageHeader>
-      <form>
+      <form
+        onSubmit={event => onSubmitHandler(event, {
+          url: url,
+          detailsRequired: [
+            {
+              key: 'name',
+              required: name,
+              reason: nameReason
+            },
+            {
+              key: 'dob',
+              required: dob,
+              reason: dobReason
+            },
+            {
+              key: 'aadhar',
+              required: aadhar,
+              reason: aadharReason
+            },
+            {
+              key: 'pan',
+              required: pan,
+              reason: panReason
+            }
+          ]
+        })}>
         <FormField
           name="url"
           label="Your Portal"
@@ -95,6 +126,11 @@ export default function PortalSignUpPage(props) {
             updateVal={setPanReason}
           />
         }
+        <button
+          type="submit"
+          >
+          Agree
+        </button>
       </form>
     </section>
   )
