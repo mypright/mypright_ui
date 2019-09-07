@@ -34,12 +34,12 @@ function ApprovalPage() {
         description: text
       },
       {
-        id: 1,
+        id: 2,
         title: 'Aadhaar Number',
         description: text
       },
       {
-        id: 1,
+        id: 3,
         title: 'Passport ID',
         description: text
       }
@@ -69,7 +69,9 @@ function ApprovalPage() {
           data.dataPoints.map(point => (
             <Panel header={point.title} key={point.id} style={customPanelStyle}>
               <p>{point.description}</p>
+              
             </Panel>
+            
           ))
         }
       </Collapse>
