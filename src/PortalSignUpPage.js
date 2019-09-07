@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
-export default function PortalSignup(props) {
+export default function PortalSignUpPage(props) {
   const [url, setUrl] = useState("")
 
   const [name, setName] = useState(false)

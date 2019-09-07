@@ -3,8 +3,9 @@ import './App.css';
 import { Button } from 'antd'
 import { Router, Link } from '@reach/router'
 
+import PortalSignUpPage from './PortalSignUpPage'
+
 const ApprovalPage = () => <Link to="/portal"><Button>Portal signup page</Button></Link>
-const PortalSignUpPage = () => <Link to="/approval"><Button>Approval page</Button></Link>
 
 function App() {
   return (
