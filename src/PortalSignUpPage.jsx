@@ -63,6 +63,7 @@ export default function PortalSignUpPage(props) {
           name="url"
           label="Your Portal"
           hint="xyz.com"
+          pattern="^[a-z]\w*.[a-z]*$"
           required={true}
           updateVal={setUrl}
         />
