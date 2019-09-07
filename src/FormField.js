@@ -13,7 +13,8 @@ export default function FormField(props) {
         required,
         updateVal,
         defaultValue,
-        hint
+        hint,
+        pattern
     } = props;
     return <div className="obc_grid" style={{margin: 25}}>
          <Form.Item label={`${label} ${required ? '*': ''}`} >
@@ -26,6 +27,7 @@ export default function FormField(props) {
                 className={classes.inputType}
                 onChange={(event) => updateVal(event.target.value)}
                 defaultValue={defaultValue}
+                pattern={pattern || "*"}
             />
         </Form.Item>
     </div>
