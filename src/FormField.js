@@ -27,7 +27,7 @@ export default function FormField(props) {
                 className={classes.inputType}
                 onChange={(event) => updateVal(event.target.value)}
                 defaultValue={defaultValue}
-                pattern={pattern || "*"}
+                pattern={pattern || ".*"}
             />
         </Form.Item>
     </div>

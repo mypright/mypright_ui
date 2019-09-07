@@ -3,7 +3,7 @@ import { PageHeader, Button, Form, Modal } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
-const REGISTER_API = ""
+const REGISTER_API = "https://myprightservice.herokuapp.com/site/request"
 
 function generateLoginButton(id) {
   return <button>{id}</button>
