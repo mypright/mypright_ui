@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button } from 'antd'
-import { Router, Link } from '@reach/router'
+import { Router } from '@reach/router'
 import ApprovalPage from './ApprovalPage'
 import PortalSignUpPage from './PortalSignUpPage'
 

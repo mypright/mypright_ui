@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button,Collapse, Alert, Icon, PageHeader, Card  } from 'antd'
-import {Formik} from 'formik'
+import { Button,Collapse, Alert, Icon, PageHeader, Card  } from 'antd'x
 import ButtonGroup from 'antd/lib/button/button-group';
 
 const {Panel} = Collapse;
