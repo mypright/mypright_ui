@@ -3,7 +3,7 @@ import './App.css';
 import { Router } from '@reach/router'
 import ApprovalPage from './ApprovalPage'
 import PortalSignUpPage from './PortalSignUpPage'
-
+import ProfilePage from './ProfilePage'
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Router>
         <ApprovalPage path="/approval" />
         <PortalSignUpPage path="/portal" />
+        <ProfilePage path="/profile" />
       </Router>
     </div>
   );

@@ -24,27 +24,27 @@ const customPanelStyle = {
 
 function ApprovalPage() {
   const data = {
-    portalDetails: {
-      name: 'Google'
-    },
-    dataPoints: [
+    id: 2231,
+    siteUrl: 'https://google.com',
+    userDetail: [
       {
-        id: 1,
-        title: 'Email Address',
-        description: text
+        detailName: 'Email Address',
+        required: true,
+        reason: text
       },
       {
-        id: 2,
-        title: 'Aadhaar Number',
-        description: text
+        detailName: "Aadhaar Number",
+        required: true,
+        reason: text
       },
       {
-        id: 3,
-        title: 'Passport ID',
-        description: text
-      }
+        detailName: "Passport ID",
+        required: true,
+        reason: text
+      },
     ]
   }
+
   return (
     <section className="container">
       <PageHeader style={{margin: pageMargin, padding: 0}}>
@@ -52,7 +52,7 @@ function ApprovalPage() {
           Approval request
         </h1>
       </PageHeader>
-      <Card style={{margin: pageMargin}}><b>{data.portalDetails.name}</b> is requesting access to your account:</Card>
+      <Card style={{margin: pageMargin}}><b>{data.siteUrl}</b> is requesting access to your account:</Card>
       <Alert
         style={{margin: pageMargin}}
         message="Warning"
@@ -66,10 +66,9 @@ function ApprovalPage() {
         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
       >
         {
-          data.dataPoints.map(point => (
-            <Panel header={point.title} key={point.id} style={customPanelStyle}>
-              <p>{point.description}</p>
-              
+          data.userDetail.map((detail, id) => (
+            <Panel header={detail.detailName} key={id} style={customPanelStyle}>
+              <p>{detail.reason}</p>
             </Panel>
             
           ))
