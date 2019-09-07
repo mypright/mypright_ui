@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { PageHeader, Form, Icon, Input, Button, Checkbox } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
@@ -17,9 +18,15 @@ export default function PortalSignUpPage(props) {
   const [pan, setPan] = useState(false)
   const [panReason, setPanReason] = useState("")
 
+  const pageMargin = 25;
+
   return (
-    <section>
-      <h2>Signup Agreement</h2>
+    <section className="container">
+      <PageHeader style={{margin: pageMargin, padding: 0}}>
+        <h1 style={{margin: 0}}>
+          Signup Agreement
+        </h1>
+      </PageHeader>
       <form>
         <FormField
           name="url"

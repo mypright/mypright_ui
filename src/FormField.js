@@ -1,4 +1,5 @@
 import React from "react";
+import { Input, Form } from 'antd'
 
 const classes = {
     label: "",
@@ -14,23 +15,18 @@ export default function FormField(props) {
         defaultValue,
         hint
     } = props;
-    return <div className="obc_grid">
-        <label htmlFor={name}
-               className={classes.label}>
-               {label}
-        </label>
-        {
-            required &&
-            <span className={classes.mandatory}>*</span>
-        }
-        <input
-            data-testid={name}
-            id={name}
-            placeholder={hint}
-            required={required}
-            className={classes.inputType}
-            onChange={(event) => updateVal(event.target.value)}
-            defaultValue={defaultValue}
-        />
+    return <div className="obc_grid" style={{margin: 25}}>
+         <Form.Item label={`${label} ${required ? '*': ''}`} >
+            <Input
+                data-testid={name}
+                id={name}
+                placeholder={hint}
+                required={required}
+                htmlFor={name}
+                className={classes.inputType}
+                onChange={(event) => updateVal(event.target.value)}
+                defaultValue={defaultValue}
+            />
+        </Form.Item>
     </div>
 }

@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Form, Checkbox} from 'antd'
 const classes = {
     label: "",
     inputType: "",
@@ -12,18 +12,14 @@ export default function FormCheckbox(props) {
         updateVal,
         defaultValue,
     } = props;
-    return <div className="obc_grid">
-        <label htmlFor={name}
-               className={classes.label}>
-               {label}
-        </label>
-        <input
-          type="checkbox"
-          data-testid={name}
-          id={name}
-          className={classes.inputType}
-          onChange={(event) => updateVal(event.target.checked)}
-          defaultValue={defaultValue || false}
-        />
+    return <div className="obc_grid" style={{margin: 25}}>
+        <Checkbox
+                data-testid={name}
+                id={name}
+                htmlFor={name}
+                className={classes.inputType}
+                onChange={(event) => updateVal(event.target.checked)}
+                defaultValue={defaultValue || false}
+            /> {label}
     </div>
 }
