@@ -67,7 +67,11 @@ function ApprovalPage() {
     if (!loadedState) {
       fetchData().then(items => {
         const newset = new Set()
-        items.forEach(item => newset.add(item))
+        items.forEach(item => {
+          if (item.approved) {
+            newset.add(item)
+          }
+        })
         setData(newset)
         setLoadedState(true)
       })
