@@ -16,6 +16,28 @@ const customPanelStyle = {
 };
 
 const APPROVAL_API = "https://myprightservice.herokuapp.com/site/data?uniqueSiteId="
+const APPROVE_API = "https://myprightservice.herokuapp.com/site/approve"
+
+function approve(uniqueSiteId) {
+  fetch(APPROVE_API, {
+      method: 'post',
+      body: {
+        uniqueSiteId: uniqueSiteId,
+        approved: true
+      },
+      headers: {
+          'Content-Type': 'application/json',
+      }
+  })
+  .then(res => {
+    if(res.status === 200) {
+      alert("Approved")
+    } else {
+      alert("Try Again")
+    }
+  })
+  .catch(exc => console.log(exc))
+}
 
 function ApprovalPage() {
 
@@ -80,7 +102,9 @@ function ApprovalPage() {
           flexFlow: 'row wrap',
           justifyContent: 'center'
         }}>
-          <Button type="primary" size="large">Approve Request</Button>
+          <Button type="primary" size="large" onClick={() => approve(uniqueSiteId)}>
+            Approve Request
+          </Button>
         </Button.Group>
       </Spin>
     </section>
