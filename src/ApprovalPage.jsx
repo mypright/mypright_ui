@@ -21,6 +21,7 @@ const APPROVE_API = "https://myprightservice.herokuapp.com/site/approve"
 function approve(uniqueSiteId) {
   fetch(APPROVE_API, {
       method: 'post',
+      mode: 'cors',
       body: {
         uniqueSiteId: uniqueSiteId,
         approved: true
