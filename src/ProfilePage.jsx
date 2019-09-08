@@ -23,7 +23,7 @@ const APPROVE_API = "https://myprightservice.herokuapp.com/site/approve"
 function ApprovalPage() {
   const API = 'https://myprightservice.herokuapp.com/site/data/all';
   const [loadedState, setLoadedState] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(new Set());
 
   function revokePermissions(uniqueSiteId) {
     fetch(APPROVE_API, {
@@ -48,19 +48,22 @@ function ApprovalPage() {
     .catch(console.log)
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetch(API)
-        const json = await data.json()
-        return [...json]
-      } catch(e) {
-        console.error(e)
-      }
+  const fetchData = async () => {
+    try {
+      const data = await fetch(API)
+      const json = await data.json()
+      return json
+    } catch(e) {
+      console.error(e)
     }
+  }
+
+  useEffect(() => {
     if (!loadedState) {
       fetchData().then(items => {
-        setData([...data, ...items])
+        const newset = new Set()
+        items.forEach(item => newset.add(item))
+        setData(newset)
         setLoadedState(true)
       })
     }
@@ -74,7 +77,6 @@ function ApprovalPage() {
       itemLayout="vertical"
       dataSource={data}
       renderItem={item => {
-        console.log(item)
         return (
           <Collapse
               style={{background: 'none'}}
