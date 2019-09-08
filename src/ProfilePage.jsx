@@ -38,8 +38,13 @@ function ApprovalPage() {
     })
     .then(res => {
       if(res.status === 200) {
-        const filteredData = data.filter(item => item.uniqueSiteId !== uniqueSiteId)
-        setData(filteredData)
+        const newset = new Set(Array.from(data.values()))
+        for (let item of newset) {
+          if (item.uniqueId === uniqueSiteId) {
+            newset.delete(item)
+          }
+        }
+        setData(newset)
         alert("Permission revoked")
       } else {
         alert("Please try Again")
