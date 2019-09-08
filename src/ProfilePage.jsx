@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button,Collapse, Alert, Icon, PageHeader, Card, List, Avatar  } from 'antd';
+import { Button, Collapse, Icon, PageHeader, List, Avatar  } from 'antd';
 
 
 const {Panel} = Collapse;
@@ -114,7 +114,7 @@ function ApprovalPage() {
                         <Panel header={detail.detailName} key={id} style={{...customPanelStyle, background: '#f6f8ff'}}>
                           <p>{detail.reason}</p>
                         </Panel>
-                        
+
                       ))
                     }
                   </Collapse>
@@ -123,7 +123,7 @@ function ApprovalPage() {
           </Collapse>
         )}
       />
-      
+
       <Button.Group style={{
         display: 'flex',
         marginTop: pageMargin,

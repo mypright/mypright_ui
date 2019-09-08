@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Checkbox} from 'antd'
+import { Checkbox } from 'antd'
 const classes = {
     label: "",
     inputType: "",

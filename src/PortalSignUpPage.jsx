@@ -6,7 +6,7 @@ import FormCheckbox from './FormCheckbox'
 const REGISTER_API = "https://myprightservice.herokuapp.com/site/request"
 
 function generateLoginButton(id) {
-  return "<button>"+id+"</button>"
+  return "<button><a href=\"https://mypright.herokuapp.com/approval?uniqueSiteId="+id+"\">LoginThrough MyPright!</a></button>"
 }
 
 function responseHandler(response, setModal, setModalData) {
@@ -57,7 +57,6 @@ export default function PortalSignUpPage(props) {
 
   const [modal, setModal] = useState(false)
   const [modalData, setModalData] = useState("")
-
 
   const pageMargin = 25;
 
