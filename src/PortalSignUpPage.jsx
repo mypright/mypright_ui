@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PageHeader, Button, Form, Modal, Tag } from 'antd'
+import { PageHeader, Button, Form, Modal, Tag, Alert } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
@@ -16,13 +16,15 @@ function responseHandler(response, setModal, setModalData) {
   setModal(true)
 }
 
-function copyCode() {
+function copyCode(setModal, setSuccess) {
   var range = document.createRange();
   range.selectNode(document.getElementById("logingButton"));
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(range);
   document.execCommand("copy");
   window.getSelection().removeAllRanges();
+  setModal(false)
+  setSuccess(true)
 }
 
 function onSubmitHandler(event, setModal, setModalData, data) {
@@ -57,7 +59,7 @@ export default function PortalSignUpPage(props) {
 
   const [modal, setModal] = useState(false)
   const [modalData, setModalData] = useState("")
-
+  const [success, setSuccess] = useState(false)
   const pageMargin = 25;
 
   return (
@@ -70,116 +72,131 @@ export default function PortalSignUpPage(props) {
       <Modal
           title="Welcome Onboard"
           visible={modal}
-          onOk={copyCode}
+          onOk={() => {
+
+            copyCode(setModal, setSuccess)
+          }}
           okText="Copy"
+          onCancel={() => {
+            setModal(false)
+          }}
         >
           <p>Copy the below button code in your login page...</p>
           <Tag id="logingButton" className="code">{modalData}</Tag>
         </Modal>
-      <Form
-        onSubmit={event => onSubmitHandler(event, setModal, setModalData, {
-          siteUrl: url,
-          userDetail: [
-            {
-              detailName: 'name',
-              required: name,
-              reason: nameReason
-            },
-            {
-              detailName: 'dob',
-              required: dob,
-              reason: dobReason
-            },
-            {
-              detailName: 'aadhar',
-              required: aadhar,
-              reason: aadharReason
-            },
-            {
-              detailName: 'pan',
-              required: pan,
-              reason: panReason
-            }
-          ].filter(item => item.required).map(item => (({ detailName, reason }) => ({ detailName, reason }))(item))
-        })}>
-        <FormField
-          name="url"
-          label="Your Portal"
-          hint="xyz.com"
-          pattern="^[a-z]\w*.[a-z]*$"
-          required={true}
-          updateVal={setUrl}
-        />
-        <FormCheckbox
-          name="name"
-          label="Name"
-          updateVal={setName}
-        />
         {
-          name &&
-          <FormField
-            name="reason_name"
-            label="Reason"
-            hint="Why do you need name of customers?"
-            required={true}
-            updateVal={setNameReason}
-          />
-        }
-        <FormCheckbox
-          name="dob"
-          label="DateOfBirth"
-          updateVal={setDob}
+          !success ? (
+            <Form
+              onSubmit={event => onSubmitHandler(event, setModal, setModalData, {
+                siteUrl: url,
+                userDetail: [
+                  {
+                    detailName: 'name',
+                    required: name,
+                    reason: nameReason
+                  },
+                  {
+                    detailName: 'dob',
+                    required: dob,
+                    reason: dobReason
+                  },
+                  {
+                    detailName: 'aadhar',
+                    required: aadhar,
+                    reason: aadharReason
+                  },
+                  {
+                    detailName: 'pan',
+                    required: pan,
+                    reason: panReason
+                  }
+                ].filter(item => item.required).map(item => (({ detailName, reason }) => ({ detailName, reason }))(item))
+              })}>
+              <FormField
+                name="url"
+                label="Your Portal"
+                hint="xyz.com"
+                pattern="^[a-z]\w*.[a-z]*$"
+                required={true}
+                updateVal={setUrl}
+              />
+              <FormCheckbox
+                name="name"
+                label="Name"
+                updateVal={setName}
+              />
+              {
+                name &&
+                <FormField
+                  name="reason_name"
+                  label="Reason"
+                  hint="Why do you need name of customers?"
+                  required={true}
+                  updateVal={setNameReason}
+                />
+              }
+              <FormCheckbox
+                name="dob"
+                label="DateOfBirth"
+                updateVal={setDob}
+              />
+              {
+                dob &&
+                <FormField
+                  name="reason_dob"
+                  label="Reason"
+                  hint="Why do you need dob of customers?"
+                  required={true}
+                  updateVal={setDobReason}
+                />
+              }
+              <FormCheckbox
+                name="aadhar"
+                label="AADHAR"
+                updateVal={setAadhar}
+              />
+              {
+                aadhar &&
+                <FormField
+                  name="reason_aadhar"
+                  label="Reason"
+                  hint="Why do you need AADHAR of customers?"
+                  required={true}
+                  updateVal={setAadharReason}
+                />
+              }
+              <FormCheckbox
+                name="pan"
+                label="PAN"
+                updateVal={setPan}
+              />
+              {
+                pan &&
+                <FormField
+                  name="reason_aadhar"
+                  label="Reason"
+                  hint="Why do you need PAN of customers?"
+                  required={true}
+                  updateVal={setPanReason}
+                />
+              }
+              <Button.Group style={{
+                display: 'flex',
+                marginTop: pageMargin,
+                marginBottom: pageMargin,
+                flexFlow: 'row wrap',
+                justifyContent: 'center'
+              }}>
+                <Button type="primary" size="large" htmlType="submit">Agree</Button>
+              </Button.Group>
+            </Form>
+          ) : <Alert
+          style={{margin: pageMargin}}
+          message="Welcome onboard!"
+          description="You can now use the code which has been copied to your clipboard in your login page"
+          type="success"
         />
-        {
-          dob &&
-          <FormField
-            name="reason_dob"
-            label="Reason"
-            hint="Why do you need dob of customers?"
-            required={true}
-            updateVal={setDobReason}
-          />
         }
-        <FormCheckbox
-          name="aadhar"
-          label="AADHAR"
-          updateVal={setAadhar}
-        />
-        {
-          aadhar &&
-          <FormField
-            name="reason_aadhar"
-            label="Reason"
-            hint="Why do you need AADHAR of customers?"
-            required={true}
-            updateVal={setAadharReason}
-          />
-        }
-        <FormCheckbox
-          name="pan"
-          label="PAN"
-          updateVal={setPan}
-        />
-        {
-          pan &&
-          <FormField
-            name="reason_aadhar"
-            label="Reason"
-            hint="Why do you need PAN of customers?"
-            required={true}
-            updateVal={setPanReason}
-          />
-        }
-        <Button.Group style={{
-          display: 'flex',
-          marginTop: pageMargin,
-          marginBottom: pageMargin,
-          flexFlow: 'row wrap',
-          justifyContent: 'center'
-        }}>
-          <Button type="primary" size="large" htmlType="submit">Agree</Button>
-        </Button.Group>
-      </Form>
     </section>
   )
 }
