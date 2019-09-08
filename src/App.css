@@ -52,3 +52,8 @@
   text-align: left;
   overflow: auto;
 }
+
+.code {
+  width: 100%;
+  overflow: auto;
+}

@@ -31,7 +31,7 @@ function ApprovalPage() {
       .then(res => res.text())
       .then(res => {
         try {
-          const body = JSON.parse(res)
+          const body = JSON.parse(res).siteRequest
           if(body.siteUrl && body.userDetail) {
             setFieldsRequired(body.userDetail || [])
             setRequestingSite(body.siteUrl || "")
