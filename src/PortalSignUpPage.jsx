@@ -100,7 +100,7 @@ export default function PortalSignUpPage(props) {
               required: pan,
               reason: panReason
             }
-          ]
+          ].filter(item => item.required).map(item => (({ detailName, reason }) => ({ detailName, reason }))(item))
         })}>
         <FormField
           name="url"
