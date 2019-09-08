@@ -78,25 +78,25 @@ export default function PortalSignUpPage(props) {
         </Modal>
       <Form
         onSubmit={event => onSubmitHandler(event, setModal, setModalData, {
-          url: url,
-          detailsRequired: [
+          siteUrl: url,
+          userDetail: [
             {
-              key: 'name',
+              detailName: 'name',
               required: name,
               reason: nameReason
             },
             {
-              key: 'dob',
+              detailName: 'dob',
               required: dob,
               reason: dobReason
             },
             {
-              key: 'aadhar',
+              detailName: 'aadhar',
               required: aadhar,
               reason: aadharReason
             },
             {
-              key: 'pan',
+              detailName: 'pan',
               required: pan,
               reason: panReason
             }
