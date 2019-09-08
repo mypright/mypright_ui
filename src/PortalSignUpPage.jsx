@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { PageHeader, Button, Form, Modal } from 'antd'
+import { PageHeader, Button, Form, Modal, Tag } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
 const REGISTER_API = "https://myprightservice.herokuapp.com/site/request"
 
 function generateLoginButton(id) {
-  return <button>{id}</button>
+  return "<button>"+id+"</button>"
 }
 
 function responseHandler(response, setModal, setModalData) {
@@ -16,8 +16,13 @@ function responseHandler(response, setModal, setModalData) {
   setModal(true)
 }
 
-function copyCode(data) {
-
+function copyCode() {
+  var range = document.createRange();
+  range.selectNode(document.getElementById("logingButton"));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges();
 }
 
 function onSubmitHandler(event, setModal, setModalData, data) {
@@ -66,13 +71,11 @@ export default function PortalSignUpPage(props) {
       <Modal
           title="Welcome Onboard"
           visible={modal}
-          onOk={() => copyCode()}
+          onOk={copyCode}
           okText="Copy"
         >
           <p>Copy the below button code in your login page...</p>
-          {modalData.outerHTML}
-          <br/>
-          {modalData}
+          <Tag id="logingButton" className="code">{modalData}</Tag>
         </Modal>
       <Form
         onSubmit={event => onSubmitHandler(event, setModal, setModalData, {
