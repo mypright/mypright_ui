@@ -21,7 +21,6 @@ const APPROVE_API = "https://myprightservice.herokuapp.com/site/approve"
 function approve(uniqueSiteId) {
   fetch(APPROVE_API, {
       method: 'post',
-      mode: 'cors',
       body: {
         uniqueSiteId: uniqueSiteId,
         approved: true
@@ -51,10 +50,10 @@ function ApprovalPage() {
 
   useEffect(() => {
     fetch(APPROVAL_API + uniqueSiteId)
-      .then(res => res.text())
-      .then(res => {
+      .then(res => res.json())
+      .then(json => {
         try {
-          const body = JSON.parse(res).siteRequest
+          const body = json.siteRequest
           if(body.siteUrl && body.userDetail) {
             setFieldsRequired(body.userDetail || [])
             setRequestingSite(body.siteUrl || "")
@@ -65,7 +64,7 @@ function ApprovalPage() {
         }
       })
       .catch(() => setErrors(true))
-  });
+  }, [uniqueSiteId]);
 
   return (
     <section className="container">
