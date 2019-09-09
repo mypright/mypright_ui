@@ -14,8 +14,7 @@ Your store your data in your private instance by deploying
 it into your private cloud.
 
 In simple words, it is :
-
-###Your private single sign-on and a private personal data vault.
+#### Your private single sign-on and a private personal data vault.
 
 ## Running Locally
 
@@ -41,5 +40,3 @@ heroku open
 Alternatively, you can deploy your own copy of the app using the web-based flow:
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/mypright/mypright_ui)
-
-## Documentation
