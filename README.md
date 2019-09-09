@@ -4,11 +4,11 @@ Your private signle signon and a private vault.
 
 ## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+Make sure you have [Node.js](http://nodejs.org/)
 
 ```sh
-git clone git@gitlab.com:mypright/mypright.git # or clone your own fork
-cd mypright
+git clone git@gitlab.com:mypright/mypright_ui.git # or clone your own fork
+cd mypright_ui
 npm install
 npm start
 ```
