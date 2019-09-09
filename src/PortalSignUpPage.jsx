@@ -3,7 +3,7 @@ import { PageHeader, Button, Form, Modal, Tag, Alert } from 'antd'
 import FormField from './FormField'
 import FormCheckbox from './FormCheckbox'
 
-const REGISTER_API = "https://myprightservice.herokuapp.com/site/request"
+const REGISTER_API = `${process.env.REACT_APP_BACKEND}/site/request`
 
 function generateLoginButton(id) {
   return "<button><a href=\"https://mypright.herokuapp.com/approval?uniqueSiteId="+id+"\">LoginThrough MyPright!</a></button>"
