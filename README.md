@@ -14,8 +14,7 @@ Your store your data in your private instance by deploying
 it into your private cloud.
 
 In simple words, it is :
-
-####Your private single sign-on and a private personal data vault.
+#### Your private single sign-on and a private personal data vault.
 
 ## Running Locally
 
