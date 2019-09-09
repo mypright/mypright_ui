@@ -1,4 +1,7 @@
 {
+  "name": "MyPright",
+  "description": "MyPright frontend app",
+  "repository": "https://gitlab.com/mypright/mypright_ui",
   "buildpacks": [
     {
       "url": "mars/create-react-app"
