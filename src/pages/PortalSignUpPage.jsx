@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { PageHeader, Button, Form, Modal, Tag, Alert } from 'antd'
-import FormField from './FormField'
-import FormCheckbox from './FormCheckbox'
+import FormField from '../components/FormField'
+import FormCheckbox from '../components/FormCheckbox'
 
 const REGISTER_API = `${process.env.REACT_APP_BACKEND}/site/request`
 
