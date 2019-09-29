@@ -23,9 +23,12 @@ Make sure you have [Node.js](http://nodejs.org/)
 ```sh
 git clone git@gitlab.com:mypright/mypright_ui.git # or clone your own fork
 cd mypright_ui
+cp .env.example .env
 npm install
 npm start
 ```
+
+.env file should have your own backend [MyPright](https://gitlab.com/mypright/mypright) instance url
 
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
@@ -40,3 +43,5 @@ heroku open
 Alternatively, you can deploy your own copy of the app using the web-based flow:
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/mypright/mypright_ui)
+
+Last Step: Add `REACT_APP_BACKEND` in your heroku app config vars.
