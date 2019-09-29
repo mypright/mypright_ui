@@ -15,8 +15,8 @@ const customPanelStyle = {
   overflow: 'hidden',
 };
 
-const APPROVAL_API = "https://myprightservice.herokuapp.com/site/data?uniqueSiteId="
-const APPROVE_API = "https://myprightservice.herokuapp.com/site/approve"
+const APPROVAL_API = `${process.env.REACT_APP_BACKEND}/site/data?uniqueSiteId=`
+const APPROVE_API = `${process.env.REACT_APP_BACKEND}/site/approve`
 
 function approve(uniqueSiteId) {
   fetch(APPROVE_API, {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect,  } from 'react';
 import { Card, Collapse, Icon, PageHeader, List, Avatar  } from 'antd';
 import Skeleton from 'react-loading-skeleton'
-import LoginForm from './LoginForm'
+import LoginForm from '../components/LoginForm'
 
 const {Panel} = Collapse;
 

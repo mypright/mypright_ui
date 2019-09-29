@@ -17,11 +17,11 @@ const customPanelStyle = {
   overflow: 'hidden',
 };
 
-const APPROVE_API = "https://myprightservice.herokuapp.com/site/approve"
+const APPROVE_API = `${process.env.REACT_APP_BACKEND}/site/approve`
+const PROFILE_API = `${process.env.REACT_APP_BACKEND}/site/data/all`
 
 
 function ApprovalPage() {
-  const API = 'https://myprightservice.herokuapp.com/site/data/all';
   const [loadedState, setLoadedState] = useState(false);
   const [data, setData] = useState(new Set());
 
@@ -55,7 +55,7 @@ function ApprovalPage() {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(API)
+      const data = await fetch(PROFILE_API)
       const json = await data.json()
       return json
     } catch(e) {
@@ -78,7 +78,7 @@ function ApprovalPage() {
     }
   }, [data, loadedState]);
 
-  
+
 
   const AccountList = (
     <List
@@ -131,7 +131,7 @@ function ApprovalPage() {
                     Details
                   </h3> : <Skeleton/>
                   }
-                  
+
                   <Collapse
                     style={{background: 'none', margin: pageMargin}}
                     bordered={false}
@@ -143,7 +143,7 @@ function ApprovalPage() {
                         <Panel header={detail.detailName} key={id} style={{...customPanelStyle, background: '#f6f8ff'}}>
                           <p>{detail.reason}</p>
                         </Panel>
-                        
+
                       ))
                     }
                   </Collapse>
@@ -154,8 +154,8 @@ function ApprovalPage() {
       }}
     />
   )
-  
-  
+
+
   return (
     <section className="container">
       <PageHeader style={{margin: pageMargin, padding: 0}}>

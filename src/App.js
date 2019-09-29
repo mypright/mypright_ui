@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
+import './assets/App.css';
 import { Router } from '@reach/router'
-import ApprovalPage from './ApprovalPage'
-import PortalSignUpPage from './PortalSignUpPage'
-import ProfilePage from './ProfilePage'
+import ApprovalPage from './pages/ApprovalPage'
+import PortalSignUpPage from './pages/PortalSignUpPage'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
   return (
