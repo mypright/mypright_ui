@@ -21,10 +21,10 @@ const APPROVE_API = `${process.env.REACT_APP_BACKEND}/site/approve`
 function approve(uniqueSiteId) {
   fetch(APPROVE_API, {
       method: 'post',
-      body: {
+      body: JSON.stringify({
         uniqueSiteId: uniqueSiteId,
         approved: true
-      },
+      }),
       headers: {
           'Content-Type': 'application/json',
       }
